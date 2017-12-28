@@ -141,3 +141,9 @@ bool gpio_read(int const pin_nr)
 
     return GPLEV[PIN_OFFSET(pin_nr)] & PIN_VAL(pin_nr);
 }
+
+void gpio_set_output(int const pin_nr, bool const high)
+{
+    set_pin_mode(pin_nr, mode_output);
+    gpio_write(pin_nr, high);
+}
