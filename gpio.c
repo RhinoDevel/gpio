@@ -65,6 +65,12 @@ static void set_input_resistor_pull(int const pin_nr, int const pull)
     *GPPULLCLK0 = 0;
 }
 
+static void set_input_pull(int const pin_nr, int const pull)
+{
+    set_pin_mode(pin_nr, mode_input);
+    set_input_resistor_pull(pin_nr, pull);
+}
+
 bool gpio_init()
 {
     int mem_dev = -1;
@@ -109,12 +115,12 @@ bool gpio_init()
 
 void gpio_set_input_pull_up(int const pin_nr)
 {
-    set_input_resistor_pull(pin_nr, pull_up);
+    set_input_pull(pin_nr, pull_up);
 }
 
 void gpio_set_input_pull_down(int const pin_nr)
 {
-    set_input_resistor_pull(pin_nr, pull_down);
+    set_input_pull(pin_nr, pull_down);
 }
 
 void gpio_write(int const pin_nr, bool const high)
