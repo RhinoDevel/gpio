@@ -10,9 +10,13 @@
 #include <assert.h>
 
 // Physical addresses
-#define BCM2836_PERI_BASE       0x3F000000
-#define GPIO_BASE               (BCM2836_PERI_BASE + 0x200000)
-#define BLOCK_SIZE              (4*1024)
+#define BCM2835_PERI_BASE 0x20000000 // Raspi 1
+#define BCM2836_PERI_BASE 0x3F000000 // Raspi 2
+
+#define PERI_BASE BCM2836_PERI_BASE
+
+#define GPIO_BASE (PERI_BASE + 0x200000)
+#define BLOCK_SIZE (4*1024)
 
 static int const mode_input = 0;
 static int const mode_output = 1;
