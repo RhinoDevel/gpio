@@ -54,6 +54,8 @@ static void set_pin_mode(int const pin_nr, int const mode)
     GPFSEL[offset] |= mode<<shift; // Set mode/function.
 }
 
+// TODO: BUG: Make this work for all pins (GPPUDCLK1):
+//
 static void set_input_resistor_pull(int const pin_nr, int const pull)
 {
     assert(gpio!=NULL);
